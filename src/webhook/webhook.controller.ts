@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Post, Response } from '@nestjs/common';
+import { BadRequestException, Body, Post, Headers } from '@nestjs/common';
 import { Controller, Get, Query } from '@nestjs/common';
 import { WebhookService } from './webhook.service';
 
@@ -25,7 +25,11 @@ export class WebhookController {
   }
 
   @Post()
-  async handleIncomingWebhookEvent(@Body() body: any, @Response() res: any) {
+  async handleIncomingWebhookEvent(
+    @Body() body: any,
+    @Headers('X-Hub-Signature') signature: string,
+  ) {
+    console.log(signature);
     let recipientid: string;
     if (body.object === 'page') {
       body.entry.forEach((entry) => {
@@ -33,8 +37,6 @@ export class WebhookController {
         console.log(webhookEvent);
         recipientid = webhookEvent.sender.id;
       });
-
-      res.send('EVENT_RECEIVED');
 
       this.webhookService.sendResponse(recipientid);
     }

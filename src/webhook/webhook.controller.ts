@@ -1,8 +1,11 @@
-import { BadRequestException, Body, Post } from '@nestjs/common';
+import { BadRequestException, Body, Post, Response } from '@nestjs/common';
 import { Controller, Get, Query } from '@nestjs/common';
+import { WebhookService } from './webhook.service';
 
 @Controller('webhook')
 export class WebhookController {
+  constructor(private webhookService: WebhookService) {}
+
   @Get()
   verifyHook(
     @Query('hub.mode') mode: string,
@@ -13,6 +16,7 @@ export class WebhookController {
 
     if (mode && token) {
       if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+        console.log('WEBHOOK_VERIFIED');
         return challenge;
       }
     } else {
@@ -21,13 +25,18 @@ export class WebhookController {
   }
 
   @Post()
-  handleIncomingWebhookEvent(@Body() body: any) {
+  async handleIncomingWebhookEvent(@Body() body: any, @Response() res: any) {
+    let recipientid: string;
     if (body.object === 'page') {
       body.entry.forEach((entry) => {
         const webhookEvent = entry.messaging[0];
         console.log(webhookEvent);
+        recipientid = webhookEvent.sender.id;
       });
-      return 'EVENT_RECEIVED';
+
+      res.send('EVENT_RECEIVED');
+
+      this.webhookService.sendResponse(recipientid);
     }
   }
 }

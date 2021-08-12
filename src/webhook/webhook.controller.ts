@@ -6,12 +6,16 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { Controller, Get, Query } from '@nestjs/common';
+import { MessageService } from 'src/message/message.service';
 import { IncomingWebhookEvent } from './dto/incoming-webhook-event.dto';
 import { WebhookService } from './webhook.service';
 
 @Controller('webhook')
 export class WebhookController {
-  constructor(private webhookService: WebhookService) {}
+  constructor(
+    private webhookService: WebhookService,
+    private messageService: MessageService,
+  ) {}
 
   @Get()
   verifyHook(
@@ -33,7 +37,7 @@ export class WebhookController {
   @Post()
   @HttpCode(200)
   async handleIncomingWebhookEvent(
-    @Body() body: IncomingWebhookEvent,
+    @Body() body: any,
     @Headers('X-Hub-Signature') incomingSignature: string,
   ) {
     if (
@@ -43,15 +47,18 @@ export class WebhookController {
       this.webhookService.isSignaturePayloadSame(body, incomingSignature)
     ) {
       // Process user intent here
-      let recipientid: string;
       if (body.object === 'page') {
-        body.entry.forEach((entry) => {
+        for (const entry of body.entry) {
+          // As per FB documentation, messaging property is an array that contains ONLY ONE messaging object
           const webhookEvent = entry.messaging[0];
-          console.log(webhookEvent);
-          recipientid = webhookEvent.sender.id;
-        });
 
-        this.webhookService.sendResponse(recipientid);
+          // Current implementation only support 'messages' event
+          if (webhookEvent.message && webhookEvent.message.text === 'hello') {
+            this.messageService.sendGreetingResponse(webhookEvent.sender.id);
+          } else {
+            this.messageService.sendGenericResponse(webhookEvent.sender.id);
+          }
+        }
       }
     }
   }

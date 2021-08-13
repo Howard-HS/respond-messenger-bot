@@ -12,9 +12,20 @@ export class IncomingWebhookData {
         id: string;
       };
       timestamp: number;
-      message: {
+      message?: {
         mid: string;
         text: string;
+        nlp: {
+          intents: Array<any>;
+          entities: Record<string, any>;
+          traits: Record<string, any>;
+          detected_locals: Array<any>;
+        };
+      };
+      postback?: {
+        title: string;
+        payload: string;
+        mid: string;
       };
     }[];
   }[];

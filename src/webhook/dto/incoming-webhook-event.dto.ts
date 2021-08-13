@@ -1,4 +1,4 @@
-export class IncomingWebhookEvent {
+export class IncomingWebhookData {
   object: string;
 
   entry: {

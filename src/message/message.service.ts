@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
 import { EmailService } from 'src/email/email.service';
+import { ProductService } from 'src/product/product.service';
 
 import { IncomingWebhookData } from 'src/webhook/dto/incoming-webhook-event.dto';
 @Injectable()
@@ -9,6 +10,7 @@ export class MessageService {
   constructor(
     private readonly emailService: EmailService,
     private readonly configService: ConfigService,
+    private readonly productService: ProductService,
   ) {}
 
   sendTextMessage(recipientId: string, text: string) {
@@ -51,7 +53,7 @@ export class MessageService {
     );
   }
 
-  processUserIntent(body: IncomingWebhookData) {
+  async processUserIntent(body: IncomingWebhookData) {
     if (body.object !== 'page') {
       return;
     }
@@ -70,7 +72,8 @@ export class MessageService {
         this.sendGreetingResponse(webhookEvent.sender.id);
       } else if (webhookEvent.message.text.startsWith('/price')) {
         const productId = webhookEvent.message.text.substring(6);
-        this.sendTextMessage(webhookEvent.sender.id, `Price: ${productId}`);
+        // const product = await this.productService.findOne(productId);
+        // this.sendTextMessage(webhookEvent.sender.id, `Price: ${product.price}`);
       } else if (webhookEvent.message.text.startsWith('/desc')) {
         const productId = webhookEvent.message.text.substring(6);
         this.sendTextMessage(webhookEvent.sender.id, `Desc: ${productId}`);

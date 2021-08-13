@@ -6,7 +6,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { Controller, Get, Query } from '@nestjs/common';
-import { MessageService } from 'src/message/message.service';
+import { MessageService } from '../message/message.service';
 import { IncomingWebhookData } from './dto/incoming-webhook-event.dto';
 import { ValidateIncomingWebhookConnection } from './guards/validate-incoming-webhook-connection.guard';
 import { VerifyPayload } from './guards/verify-payload.guard';

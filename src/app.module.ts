@@ -4,8 +4,11 @@ import { ConfigService, ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Product } from './product/product.entity';
+import { Product } from './product/models/product.entity';
 import { WebhookModule } from './webhook/webhook.module';
+import { MessageModule } from './message/message.module';
+import { ProductModule } from './product/product.module';
+import { EmailModule } from './email/email.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -16,16 +19,17 @@ import { WebhookModule } from './webhook/webhook.module';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
         return {
-          type: 'mongodb',
-          url: config.get<string>('MONGO_CONNECTION_URL'),
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
+          type: 'sqlite',
+          database: config.get('DB_NAME'),
           synchronize: true,
           entities: [Product],
         };
       },
     }),
     WebhookModule,
+    MessageModule,
+    ProductModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

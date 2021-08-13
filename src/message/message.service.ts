@@ -1,15 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
 import { EmailService } from 'src/email/email.service';
 
 import { IncomingWebhookData } from 'src/webhook/dto/incoming-webhook-event.dto';
 @Injectable()
 export class MessageService {
-  constructor(private readonly emailService: EmailService) {}
+  constructor(
+    private readonly emailService: EmailService,
+    private readonly configService: ConfigService,
+  ) {}
 
   sendTextMessage(recipientId: string, text: string) {
+    const pageAccessToken = this.configService.get('PAGE_ACCESS_TOKEN');
     axios.post(
-      `https://graph.facebook.com/v11.0/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`,
+      `https://graph.facebook.com/v11.0/me/messages?access_token=${pageAccessToken}`,
       {
         recipient: { id: recipientId },
         message: { text },
@@ -63,7 +68,6 @@ export class MessageService {
 
       if (webhookEvent.message.text === 'hello') {
         this.sendGreetingResponse(webhookEvent.sender.id);
-        this.emailService.send('hschang.2008@gmail.com', 'test', 'hello!');
       } else if (webhookEvent.message.text.startsWith('/price')) {
         const productId = webhookEvent.message.text.substring(6);
         this.sendTextMessage(webhookEvent.sender.id, `Price: ${productId}`);

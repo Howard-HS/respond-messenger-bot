@@ -1,8 +1,12 @@
-import { CanActivate, ExecutionContext } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Request } from 'express';
 import { createHmac } from 'crypto';
 
+@Injectable()
 export class VerifyPayload implements CanActivate {
+  constructor(private configService: ConfigService) {}
+
   canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest() as Request;
 
@@ -14,7 +18,7 @@ export class VerifyPayload implements CanActivate {
       incomingSignature.length === 45 &&
       incomingSignature.substring(0, 5) === 'sha1='
     ) {
-      const signature = createHmac('sha1', process.env.APP_SECRET)
+      const signature = createHmac('sha1', this.configService.get('APP_SECRET'))
         .update(rawData)
         .digest('hex');
 

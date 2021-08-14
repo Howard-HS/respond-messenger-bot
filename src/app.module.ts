@@ -9,6 +9,8 @@ import { WebhookModule } from './webhook/webhook.module';
 import { MessageModule } from './message/message.module';
 import { ProductModule } from './product/product.module';
 import { EmailModule } from './email/email.module';
+import { CustomerModule } from './customer/customer.module';
+import { Customer } from './customer/model/customer.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,7 +24,7 @@ import { EmailModule } from './email/email.module';
           type: 'sqlite',
           database: config.get('DB_NAME'),
           synchronize: true,
-          entities: [Product],
+          entities: [Product, Customer],
         };
       },
     }),
@@ -30,6 +32,7 @@ import { EmailModule } from './email/email.module';
     MessageModule,
     ProductModule,
     EmailModule,
+    CustomerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

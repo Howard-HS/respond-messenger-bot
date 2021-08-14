@@ -7,9 +7,17 @@ import { WebhookController } from './webhook.controller';
 import { WebhookService } from './webhook.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from '../product/models/product.entity';
+import { CustomerService } from 'src/customer/customer.service';
+import { Customer } from 'src/customer/model/customer.entity';
 @Module({
-  imports: [TypeOrmModule.forFeature([Product])],
+  imports: [TypeOrmModule.forFeature([Product, Customer])],
   controllers: [WebhookController],
-  providers: [WebhookService, MessageService, EmailService, ProductService],
+  providers: [
+    WebhookService,
+    MessageService,
+    EmailService,
+    ProductService,
+    CustomerService,
+  ],
 })
 export class WebhookModule {}

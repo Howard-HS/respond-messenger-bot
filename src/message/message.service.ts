@@ -1,6 +1,7 @@
+import axios from 'axios';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import axios from 'axios';
+import { CustomerService } from 'src/customer/customer.service';
 import { EmailService } from 'src/email/email.service';
 import { Product } from 'src/product/models/product.entity';
 import { ProductService } from 'src/product/product.service';
@@ -12,22 +13,25 @@ export class MessageService {
     private readonly emailService: EmailService,
     private readonly configService: ConfigService,
     private readonly productService: ProductService,
+    private readonly customerService: CustomerService,
   ) {}
 
-  private sendTextMessage(customerPsid: string, text: string) {
+  private async sendTextMessage(customerPsid: string, text: string) {
     const pageAccessToken = this.configService.get('PAGE_ACCESS_TOKEN');
-    axios
-      .post(
+    try {
+      await axios.post(
         `https://graph.facebook.com/v11.0/me/messages?access_token=${pageAccessToken}`,
         {
           recipient: { id: customerPsid },
           message: { text },
         },
-      )
-      .catch((err) => console.log(err.response.data));
+      );
+    } catch (error) {
+      console.log(error.response.data);
+    }
   }
 
-  private sendTemplateMessage(
+  private async sendTemplateMessage(
     customerPsid: string,
     product: Product,
     intent: string,
@@ -43,8 +47,8 @@ export class MessageService {
       subtitle = `Shipping Fee: $${product.price}`;
     }
 
-    axios
-      .post(
+    try {
+      await axios.post(
         `https://graph.facebook.com/v11.0/me/messages?access_token=${pageAccessToken}`,
         {
           recipient: { id: customerPsid },
@@ -71,8 +75,10 @@ export class MessageService {
             },
           },
         },
-      )
-      .catch((err) => console.log(err.response.data));
+      );
+    } catch (error) {
+      console.log(error.response.data);
+    }
   }
 
   private async sendGreetingResponse(customerPsid: string) {
@@ -84,9 +90,13 @@ export class MessageService {
     const greetingMessage =
       randomResponses[Math.floor(Math.random() * randomResponses.length)];
 
-    this.sendTextMessage(
+    await this.sendTextMessage(
       customerPsid,
       `${greetingMessage}\nHow can I assist you?`,
+    );
+    await this.sendTextMessage(
+      customerPsid,
+      'Here are things that I can understand, try typing: \n*/price product-xyz* _Price of a product._\n*/desc product-xyz* _The details of the product._\n*/shipping product-xyz* _The shipping fee of the product._',
     );
   }
 
@@ -146,6 +156,15 @@ export class MessageService {
       const webhookEvent = entry.messaging[0];
       const customerPsid = webhookEvent.sender.id;
 
+      const existingCustomer = await this.customerService.findOne(customerPsid);
+
+      // If existing customer is not found, send a first time greeting response
+      if (!existingCustomer) {
+        this.sendGreetingResponse(customerPsid);
+        this.customerService.create(customerPsid);
+        continue;
+      }
+
       // If incoming webhook event is neither 'messages' event or 'postback' event
       if (!webhookEvent.message && !webhookEvent.postback) {
         this.sendGenericResponse(webhookEvent.sender.id);
@@ -175,7 +194,6 @@ export class MessageService {
             'shipping-query',
           );
         } else {
-          this.sendGreetingResponse(webhookEvent.sender.id);
           this.sendInstructionsResponse(webhookEvent.sender.id);
         }
       }
@@ -189,7 +207,7 @@ export class MessageService {
         const product = await this.productService.findOne(productId);
         this.sendTextMessage(
           customerPsid,
-          `Good Choice! We've received your request and will process your order shortly`,
+          `Good Choice! We've received your request and will process your order shortly.`,
         );
         this.emailService.sendNotification(customerPsid, product);
       }

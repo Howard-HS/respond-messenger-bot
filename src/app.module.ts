@@ -19,10 +19,10 @@ import { Customer } from './customer/model/customer.entity';
     }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
+      useFactory: () => {
         return {
           type: 'sqlite',
-          database: config.get('DB_NAME'),
+          database: 'db.sqlite',
           synchronize: true,
           entities: [Product, Customer],
         };

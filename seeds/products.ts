@@ -1,16 +1,10 @@
-export const product = [
+export const products = [
   {
     sku: 43900,
     name: 'Duracell - AAA Batteries (4-Pack)',
     type: 'HardGood',
     price: 5.49,
     upc: '041333424019',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208002', name: 'Alkaline Batteries' },
-    ],
     shipping: 5.49,
     description:
       'Compatible with select electronic devices; AAA size; DURALOCK Power Preserve technology; 4-pack',
@@ -26,12 +20,6 @@ export const product = [
     type: 'HardGood',
     price: 5.49,
     upc: '041333415017',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208002', name: 'Alkaline Batteries' },
-    ],
     shipping: 5.49,
     description:
       'Long-lasting energy; DURALOCK Power Preserve technology; for toys, clocks, radios, games, remotes, PDAs and more',
@@ -47,12 +35,6 @@ export const product = [
     type: 'HardGood',
     price: 7.49,
     upc: '041333825014',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208002', name: 'Alkaline Batteries' },
-    ],
     shipping: 5.49,
     description:
       'Compatible with select electronic devices; AA size; DURALOCK Power Preserve technology; 8-pack',
@@ -68,12 +50,6 @@ export const product = [
     type: 'HardGood',
     price: 4.99,
     upc: '039800011329',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208002', name: 'Alkaline Batteries' },
-    ],
     shipping: 5.49,
     description: '4-pack AA alkaline batteries; battery tester included',
     manufacturer: 'Energizer',
@@ -88,12 +64,6 @@ export const product = [
     type: 'HardGood',
     price: 8.99,
     upc: '041333440019',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208002', name: 'Alkaline Batteries' },
-    ],
     shipping: 5.49,
     description:
       'Compatible with select electronic devices; C size; DURALOCK Power Preserve technology; 4-pack',
@@ -109,12 +79,6 @@ export const product = [
     type: 'HardGood',
     price: 9.99,
     upc: '041333430010',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208002', name: 'Alkaline Batteries' },
-    ],
     shipping: 5.99,
     description:
       'Compatible with select electronic devices; D size; DURALOCK Power Preserve technology; 4-pack',
@@ -130,12 +94,6 @@ export const product = [
     type: 'HardGood',
     price: 7.99,
     upc: '041333216010',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208002', name: 'Alkaline Batteries' },
-    ],
     shipping: 5.49,
     description:
       'Compatible with select electronic devices; alkaline chemistry; 9V size; DURALOCK Power Preserve technology; 2-pack',
@@ -151,7 +109,6 @@ export const product = [
     type: 'HardGood',
     price: 39.99,
     upc: '093207005060',
-    category: [{ id: 'pcmcat113100050015', name: 'Carfi Instore Only' }],
     shipping: 0,
     description:
       'From our expanded online assortment; compatible with Directed Electronics alarm systems; microphone and microprocessor detect and analyze intrusions; detects quiet glass breaks',
@@ -167,12 +124,6 @@ export const product = [
     type: 'HardGood',
     price: 5.99,
     upc: '039800013200',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'pcmcat248700050021', name: 'Housewares' },
-      { id: 'pcmcat303600050001', name: 'Household Batteries' },
-      { id: 'abcat0208006', name: 'Specialty Batteries' },
-    ],
     shipping: 5.49,
     description: 'Alkaline batteries; 1.5V',
     manufacturer: 'Energizer',
@@ -187,16 +138,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429002757',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050033', name: 'Dash Installation Kits' },
-    ],
     shipping: 0,
     description:
       'From our expanded online assortment; compatible with most 1989-2000 Ford, Lincoln and Mercury vehicles; snap-in TurboKit offers fast installation; spacer/trim ring; rear support bracket',
@@ -212,16 +153,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429003273',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050033', name: 'Dash Installation Kits' },
-    ],
     shipping: 0,
     description:
       'From our expanded online assortment; compatible with select GM vehicles; plastic material',
@@ -237,16 +168,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429056514',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       "Compatible with select 1998-2008 Ford vehicles; connects an aftermarket radio to a vehicle's harness",
@@ -262,16 +183,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429056507',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       "Compatible with Honda and Acura vehicles; connects an aftermarket radio to your car's harness",
@@ -287,16 +198,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429002597',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       "Compatible with most 1986-1998 Honda Acura vehicles; connects an aftermarket radio to a vehicle's harness",
@@ -312,16 +213,6 @@ export const product = [
     type: 'HardGood',
     price: 13.99,
     upc: '086429007189',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050032', name: 'Antennas & Adapters' },
-    ],
     shipping: 0,
     description:
       'Compatible with select 1988-2005 vehicles; adapts an aftermarket antenna to OEM radios; flat plug',
@@ -337,8 +228,7 @@ export const product = [
     type: 'HardGood',
     price: 29.99,
     upc: '400003495726',
-    category: [{ id: 'pcmcat298100050010', name: 'In-Store Only' }],
-    shipping: '',
+    shipping: 0,
     description: 'PORTABLE RADAR DETECTOR INST',
     manufacturer: 'INSTALL',
     model: 'PRT RDR IN',
@@ -352,12 +242,6 @@ export const product = [
     type: 'HardGood',
     price: 19.99,
     upc: '044476085840',
-    category: [
-      { id: 'pcmcat312300050015', name: 'Connected Home & Housewares' },
-      { id: 'abcat0802000', name: 'Telephones & Communication' },
-      { id: 'abcat0811011', name: 'Telephone Accessories' },
-      { id: 'abcat0811012', name: 'Cordless Phone Batteries' },
-    ],
     shipping: 5.49,
     description:
       'Rechargeable 3.6V 300 mAh NiCad battery for GE 2-9614 model cordless phones',
@@ -373,16 +257,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429018871',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050033', name: 'Dash Installation Kits' },
-    ],
     shipping: 0,
     description:
       'From our expanded online assortment; compatible with select Ford, Mazda and Mercury vehicles; allows the installation of an aftermarket radio into the factory dash location; high-grade ABS plastic material',
@@ -398,16 +272,6 @@ export const product = [
     type: 'HardGood',
     price: 10.99,
     upc: '086429005536',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050033', name: 'Dash Installation Kits' },
-    ],
     shipping: 0,
     description:
       'Compatible with most vehicles; designed for the installation of an aftermarket radio',
@@ -423,16 +287,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429003341',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       'Compatible with select Jeep vehicles; ABS and vinyl construction; colored-coded wires',
@@ -448,16 +302,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429113255',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       "Compatible with select Volkswagen vehicles; connects a speaker to the vehicle's stereo; easy installation",
@@ -473,16 +317,6 @@ export const product = [
     type: 'HardGood',
     price: 19.99,
     upc: '086429002528',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       'From our expanded online assortment; compatible with 1987 - 1993 Mitsubishi and Chrysler vehicles; color-coded wires',
@@ -498,16 +332,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429002627',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       "Compatible with most 1990-2001 Mazda vehicles; connects an aftermarket radio to a vehicle's harness",
@@ -523,16 +347,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429003792',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050033', name: 'Dash Installation Kits' },
-    ],
     shipping: 0,
     description:
       'From our expanded online assortment; compatible with select Chevrolet, Geo and Suzuki vehicles; allows installation of an aftermarket radio; provision for a 1/4" or 1/2" DIN equalizer; mounts precisely to OEM radio mounting positions',
@@ -548,16 +362,6 @@ export const product = [
     type: 'HardGood',
     price: 16.99,
     upc: '086429002658',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      {
-        id: 'pcmcat165900050023',
-        name: 'Car Installation Parts & Accessories',
-      },
-      { id: 'pcmcat331600050007', name: 'Car Audio Installation Parts' },
-      { id: 'pcmcat165900050031', name: 'Deck Installation Parts' },
-      { id: 'pcmcat165900050034', name: 'Deck Harnesses' },
-    ],
     shipping: 0,
     description:
       "Compatible with most 1987 and later Toyota Scion vehicles; connects an aftermarket radio to a vehicle's harness",
@@ -573,12 +377,6 @@ export const product = [
     type: 'HardGood',
     price: 99.99,
     upc: '747192120672',
-    category: [
-      { id: 'abcat0300000', name: 'Car Electronics & GPS' },
-      { id: 'abcat0302000', name: 'Car Audio' },
-      { id: 'abcat0302034', name: 'Car Subwoofers & Enclosures' },
-      { id: 'abcat0302037', name: 'Car Subwoofers' },
-    ],
     shipping: 0,
     description:
       '720W peak power handling; Klippel-optimized driver components; polymer woofer cone; butyl rubber surround',
@@ -594,11 +392,6 @@ export const product = [
     type: 'Software',
     price: 29.99,
     upc: '884088157425',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 5.49,
     description:
       'HAL LEONARD Hard Rock TrackPak: Features 12 hard rock and metal Apple Loops; compatible with GarageBand; includes guitars, bass, drums and synth parts',
@@ -614,11 +407,6 @@ export const product = [
     type: 'HardGood',
     price: 13.99,
     upc: '840391103474',
-    category: [
-      { id: 'pcmcat252700050006', name: 'Toys, Games & Drones' },
-      { id: 'pcmcat244200050008', name: 'TV, Movie & Character Toys' },
-      { id: 'pcmcat313400050000', name: 'Music Memorabilia' },
-    ],
     shipping: 5.49,
     description:
       'AQUARIUS Fender Playing Cards Gift Tin: 2 decks; hinged gift tin; 52 different images per deck',
@@ -634,11 +422,6 @@ export const product = [
     type: 'HardGood',
     price: 79.99,
     upc: '013148475753',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'abcat0208024', name: 'Musical Instrument Accessories' },
-      { id: 'pcmcat151600050042', name: 'Keyboard Accessories' },
-    ],
     shipping: 0,
     description:
       'LODUCA BROS. INC. Deluxe Keyboard Bench: Metal base; 13" x 24" padded seat; cross brace for support; adjusts to 3 different heights; can fit up to 2 people; folding design',
@@ -654,11 +437,6 @@ export const product = [
     type: 'HardGood',
     price: 23.95,
     upc: '888680029050',
-    category: [
-      { id: 'pcmcat252700050006', name: 'Toys, Games & Drones' },
-      { id: 'pcmcat244200050008', name: 'TV, Movie & Character Toys' },
-      { id: 'pcmcat287400050019', name: 'More Pop Culture Merchandise' },
-    ],
     shipping: 5.49,
     description:
       'TRUMPET MULTIMEDIA Trumpets That Work 2015 Calendar: 2015 calendar; Trumpets That Work design',
@@ -674,11 +452,6 @@ export const product = [
     type: 'Software',
     price: 99,
     upc: '724643116026',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 0,
     description:
       'AVID Pro Tools Tier 1 Audio Plug-In for PC and Mac Activation Card: Compatible with PC and Mac; redeemable for a (TL) Aggro, Bruno/Reso, Cosmonaut Voice, DINR, (TL) Drum Rehab, (TL) EveryPhase, Reel Tape Saturation or other Avid Tier 1-level plug-in',
@@ -694,12 +467,6 @@ export const product = [
     type: 'HardGood',
     price: 599.95,
     upc: '724643114053',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050035', name: 'Microphones & Live Sound' },
-      { id: 'pcmcat152200050008', name: 'Live Sound Speakers' },
-      { id: 'pcmcat152200050009', name: 'Speaker Monitors' },
-    ],
     shipping: 0,
     description:
       'M-AUDIO BX8 D2 Studio Monitors (Pair): Custom Class AB analog amplifiers; woven low-frequency driver; waveguide-loaded silk-dome tweeter; XLR and 1/4" inputs',
@@ -715,11 +482,6 @@ export const product = [
     type: 'HardGood',
     price: 5.99,
     upc: '184709950580',
-    category: [
-      { id: 'pcmcat252700050006', name: 'Toys, Games & Drones' },
-      { id: 'pcmcat244200050008', name: 'TV, Movie & Character Toys' },
-      { id: 'pcmcat287400050019', name: 'More Pop Culture Merchandise' },
-    ],
     shipping: 5.49,
     description:
       'AQUARIUS Grateful Dead Skull Logo Chunky Magnet: Features the iconic Grateful Dead skull logo; magnet; chunky design',
@@ -735,11 +497,6 @@ export const product = [
     type: 'HardGood',
     price: 79,
     upc: '694318010211',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050022', name: 'Audio Interfaces' },
-    ],
     shipping: 0,
     description:
       'ALESIS AcousticLink Guitar Recording Pack: Compatible with most guitars with a 1/4" connector; built-in analog-to-digital conversion; includes a 16.5\' GuitarLink 1/4"-to-USB cable, no-drill acoustic guitar pickup and Cubase LE recording software',
@@ -755,11 +512,6 @@ export const product = [
     type: 'Software',
     price: 29.95,
     upc: '073999891799',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 5.49,
     description:
       "HAL LEONARD Modern Rock TrackPak: Features 12 modern rock Apple Loops; compatible with GarageBand; includes complete songs, plus individual loops, beats, grooves and riffs for each song's instruments",
@@ -775,11 +527,6 @@ export const product = [
     type: 'Software',
     price: 29.99,
     upc: '884088157449',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 5.49,
     description:
       'HAL LEONARD 1970s Rock TrackPak: Features 12 classic rock songs; compatible with GarageBand; includes loops for each instrument',
@@ -795,14 +542,6 @@ export const product = [
     type: 'HardGood',
     price: 49.99,
     upc: '013148051254',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'abcat0208024', name: 'Musical Instrument Accessories' },
-      {
-        id: 'pcmcat157700050041',
-        name: 'Other Musical Instrument Accessories',
-      },
-    ],
     shipping: 0,
     description:
       'LODUCA BROS INC Professional Digital Photo Studio Kit: Lets you take professional-quality photos; includes 2 high-output tabletop lights, a 16" cubed soft-lighting frame and an adjustable mini tabletop tripod; multicompartment, padded carrying case',
@@ -818,11 +557,6 @@ export const product = [
     type: 'Software',
     price: 69.95,
     upc: '884088084479',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 0,
     description:
       'SIBELIUS Groovy Shapes Volume 1: Teaches the basics of sound, rhythm, pitch and composition; guides students through progressive exercises; lets students create original music; for ages 5 to 7 years',
@@ -838,11 +572,6 @@ export const product = [
     type: 'HardGood',
     price: 159.99,
     upc: '673454002939',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050022', name: 'Audio Interfaces' },
-    ],
     shipping: 0,
     description:
       'PRESONUS AudioBox iTwo Recording System: Compatible with Apple iPad, Windows and Mac recording software; 2 combo microphone/line/instrument inputs; Class A microphone preamplifier; balanced TRS monitor output; MIDI I/O; 24-bit/96kHz converters',
@@ -858,11 +587,6 @@ export const product = [
     type: 'HardGood',
     price: 159.95,
     upc: '673454002922',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050022', name: 'Audio Interfaces' },
-    ],
     shipping: 0,
     description:
       'PRESONUS AudioBox iOne Recording System: Compatible with Apple iPad, Windows and Mac recording software; instrument and microphone inputs; Class A microphone preamplifier; balanced TRS monitor output; 24-bit/96kHz converters',
@@ -878,11 +602,6 @@ export const product = [
     type: 'HardGood',
     price: 5.99,
     upc: '184709950603',
-    category: [
-      { id: 'pcmcat252700050006', name: 'Toys, Games & Drones' },
-      { id: 'pcmcat244200050008', name: 'TV, Movie & Character Toys' },
-      { id: 'pcmcat287400050019', name: 'More Pop Culture Merchandise' },
-    ],
     shipping: 5.49,
     description:
       'AQUARIUS Grateful Dead Bear Logo Chunky Magnet: Tie-dyed Grateful Dead bear logo; chunky design',
@@ -898,11 +617,6 @@ export const product = [
     type: 'Software',
     price: 179,
     upc: '884088867195',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 0,
     description:
       'XLN AUDIO Addictive Keys: Studio Collection: Ideal for music producers and musicians; features virtual keyboard instruments; compatible with newer major hosts and DAWs',
@@ -918,11 +632,6 @@ export const product = [
     type: 'Software',
     price: 299,
     upc: '724643116033',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 0,
     description:
       'AVID Pro Tools Tier 2 Audio Plug-In for PC and Mac Activation Card: Compatible with PC and Mac; redeemable for a Classic Compressors Bundle, Focusrite d2/d3, Impact, JOEMEEK Bundle, Moogerfooger Bundle or other Avid Tier 2-level plug-in',
@@ -938,11 +647,6 @@ export const product = [
     type: 'HardGood',
     price: 49.99,
     upc: '884088605926',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat151600050037', name: 'Keyboards' },
-      { id: 'pcmcat151600050039', name: 'Midi Keyboards & Controllers' },
-    ],
     shipping: 0,
     description:
       'KORG nanoKey2 25-Key USB MIDI Controller: USB MIDI connectivity; 25 velocity-sensitive keys; compatible with the Korg microKEY; PC and Mac compatible',
@@ -958,12 +662,6 @@ export const product = [
     type: 'HardGood',
     price: 99.99,
     upc: '694318014851',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050035', name: 'Microphones & Live Sound' },
-      { id: 'pcmcat251600050003', name: 'Microphones & Accessories' },
-      { id: 'pcmcat152100050038', name: 'Microphones' },
-    ],
     shipping: 0,
     description:
       'M-AUDIO Nova Condenser Microphone: 1.1" evaporated gold diaphragm; solid brass body and capsule; 20Hz - 18kHz frequency response; hard mount and soft case included',
@@ -979,11 +677,6 @@ export const product = [
     type: 'HardGood',
     price: 59.99,
     upc: '884088652456',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'abcat0208024', name: 'Musical Instrument Accessories' },
-      { id: 'pcmcat152100050033', name: 'DJ Equipment Accessories' },
-    ],
     shipping: 0,
     description:
       'IK MULTIMEDIA iRig Stomp: Compatible with select Apple iPhone, iPad and iPod touch models, Android and Mac computers; allows use inline with other effects pedals and more; active battery-powered output circuit',
@@ -999,12 +692,6 @@ export const product = [
     type: 'HardGood',
     price: 49.99,
     upc: '888680030773',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat205700050037', name: 'Recording Furniture & Stands' },
-      { id: 'pcmcat251600050005', name: 'Recording & Music Stands' },
-    ],
     shipping: 0,
     description:
       'IK MULTIMEDIA iKlip Xpand Microphone Stand Mount: Compatible with most tablets from 7" to 12.1"; adjustable holder with 4 expandable grips; 2 sure-grip rubber gripping points; rubber padded base; ball joint; smart bracket design; iKlip Stage app',
@@ -1020,13 +707,6 @@ export const product = [
     type: 'HardGood',
     price: 29.95,
     upc: '694318009925',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050035', name: 'Microphones & Live Sound' },
-      { id: 'pcmcat251600050003', name: 'Microphones & Accessories' },
-      { id: 'pcmcat152100050038', name: 'Microphones' },
-      { id: 'pcmcat221400050014', name: 'Dynamic' },
-    ],
     shipping: 5.99,
     description:
       'M-AUDIO AM1 Cardioid Dynamic Microphone: For amplifying and recording vocals and instruments; dynamic design; cardioid pickup pattern; steel mesh, foam-lined head grille; die-cast, zinc-alloy housing',
@@ -1042,11 +722,6 @@ export const product = [
     type: 'Software',
     price: 174.99,
     upc: '802240127758',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat152100050026', name: 'Sound Recording Software' },
-    ],
     shipping: 0,
     description:
       'STEINBERG Elements Pack: Includes Cubase Elements 6 and WaveLab Elements 7 software; lets you produce music and edit audio on your Mac or PC',
@@ -1062,12 +737,6 @@ export const product = [
     type: 'HardGood',
     price: 39.99,
     upc: '888680029074',
-    category: [
-      { id: 'abcat0207000', name: 'Musical Instruments' },
-      { id: 'pcmcat152100050020', name: 'Recording Equipment' },
-      { id: 'pcmcat205700050037', name: 'Recording Furniture & Stands' },
-      { id: 'pcmcat251600050005', name: 'Recording & Music Stands' },
-    ],
     shipping: 0,
     description:
       'IK MULTIMEDIA iKlip Xpand Mini Microphone Stand Mount: Compatible with select Apple iPhone and iPod touch models and most smartphones with 3.5" to 6" screens; rubberized Gorilla Grip technology; adjustable clamp; ball joint',

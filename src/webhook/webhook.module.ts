@@ -1,14 +1,16 @@
 import { Module } from '@nestjs/common';
-import { EmailService } from 'src/email/email.service';
-
-import { MessageService } from 'src/message/message.service';
-import { ProductService } from 'src/product/product.service';
-import { WebhookController } from './webhook.controller';
-import { WebhookService } from './webhook.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { EmailService } from '../email/email.service';
+import { MessageService } from '../message/message.service';
+import { ProductService } from '../product/product.service';
+import { WebhookService } from './webhook.service';
+import { CustomerService } from '../customer/customer.service';
+
+import { WebhookController } from './webhook.controller';
+
 import { Product } from '../product/models/product.entity';
-import { CustomerService } from 'src/customer/customer.service';
-import { Customer } from 'src/customer/model/customer.entity';
+import { Customer } from '../customer/model/customer.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Product, Customer])],
   controllers: [WebhookController],

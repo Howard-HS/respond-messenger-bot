@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Customer } from './model/customer.entity';
 import axios from 'axios';
+import { Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
+import { Customer } from './model/customer.entity';
 
 @Injectable()
 export class CustomerService {
@@ -19,7 +19,6 @@ export class CustomerService {
           'PAGE_ACCESS_TOKEN',
         )}`,
       );
-      console.log(data);
       return data;
     } catch (error) {
       return null;

@@ -4,8 +4,8 @@ import { readFile } from 'fs/promises';
 import { join } from 'path';
 
 import { ConfigService } from '@nestjs/config';
-import { Product } from 'src/product/models/product.entity';
-import { Customer } from 'src/customer/model/customer.entity';
+import { Product } from '../product/models/product.entity';
+import { Customer } from '../customer/model/customer.entity';
 @Injectable()
 export class EmailService {
   private transporter: nodemailer.Transporter;

@@ -160,8 +160,8 @@ export class MessageService {
 
       // If existing customer is not found, send a first time greeting response
       if (!existingCustomer) {
-        this.sendGreetingResponse(customerPsid);
         this.customerService.create(customerPsid);
+        this.sendGreetingResponse(customerPsid);
         continue;
       }
 
@@ -204,12 +204,15 @@ export class MessageService {
         webhookEvent.postback.payload.includes('PURCHASE-INTENT')
       ) {
         const productId = Number(webhookEvent.postback.payload.split('-')[0]);
-        const product = await this.productService.findOne(productId);
+        const [product, customerDetails] = await Promise.all([
+          this.productService.findOne(productId),
+          this.customerService.findOne(customerPsid),
+        ]);
         this.sendTextMessage(
           customerPsid,
           `Good Choice! We've received your request and will process your order shortly.`,
         );
-        this.emailService.sendNotification(customerPsid, product);
+        this.emailService.sendNotification(customerDetails, product);
       }
     }
   }

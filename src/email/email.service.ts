@@ -1,8 +1,11 @@
-import { Injectable } from '@nestjs/common';
 import nodemailer from 'nodemailer';
+import { Injectable } from '@nestjs/common';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
+
 import { ConfigService } from '@nestjs/config';
 import { Product } from 'src/product/models/product.entity';
-
+import { Customer } from 'src/customer/model/customer.entity';
 @Injectable()
 export class EmailService {
   private transporter: nodemailer.Transporter;
@@ -30,14 +33,29 @@ export class EmailService {
     });
   }
 
-  async sendNotification(customerId: string, product: Product) {
+  async sendNotification(customer: Customer, product: Product) {
+    const template = await readFile(
+      join(__dirname, 'templates', 'purchase-details.html'),
+      'utf8',
+    );
+
+    const html = template
+      .replace('{{customerName}}', `${customer.firstname} ${customer.lastname}`)
+      .replace('{{customerPsid}}', customer.psid)
+      .replace('{{productName}}', product.name)
+      .replace('{{productDescription}}', product.description)
+      .replace('{{productSku}}', product.sku.toString())
+      .replace('{{productType}}', product.type)
+      .replace('{{productPrice}}', product.price.toString())
+      .replace('{{productShipping}}', product.shipping.toString());
+
     return this.transporter.sendMail({
       to: this.configService.get('EMAIL_NOTIFICATION_RECEIVER_EMAIL'),
       from: `${this.configService.get('EMAIL_SENDER')}<${this.configService.get(
         'EMAIL_SENDER_DOMAIN',
       )}>`,
-      subject: `Customer ${customerId} Purchase Intent`,
-      html: '',
+      subject: `Customer ${customer.psid} Purchase Intent`,
+      html,
     });
   }
 }

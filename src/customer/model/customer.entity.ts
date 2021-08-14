@@ -11,6 +11,21 @@ export class Customer {
   psid: string;
 
   @Column({
+    nullable: true,
+  })
+  firstname: string;
+
+  @Column({
+    nullable: true,
+  })
+  lastname: string;
+
+  @Column({
+    nullable: true,
+  })
+  gender: string;
+
+  @Column({
     default: new Date().toISOString(),
   })
   created: string;

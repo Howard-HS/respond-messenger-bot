@@ -14,13 +14,13 @@ export class MessageService {
     private readonly productService: ProductService,
   ) {}
 
-  private sendTextMessage(recipientId: string, text: string) {
+  private sendTextMessage(customerPsid: string, text: string) {
     const pageAccessToken = this.configService.get('PAGE_ACCESS_TOKEN');
     axios
       .post(
         `https://graph.facebook.com/v11.0/me/messages?access_token=${pageAccessToken}`,
         {
-          recipient: { id: recipientId },
+          recipient: { id: customerPsid },
           message: { text },
         },
       )
@@ -28,7 +28,7 @@ export class MessageService {
   }
 
   private sendTemplateMessage(
-    recipientId: string,
+    customerPsid: string,
     product: Product,
     intent: string,
   ) {
@@ -47,7 +47,7 @@ export class MessageService {
       .post(
         `https://graph.facebook.com/v11.0/me/messages?access_token=${pageAccessToken}`,
         {
-          recipient: { id: recipientId },
+          recipient: { id: customerPsid },
           message: {
             attachment: {
               type: 'template',
@@ -75,7 +75,7 @@ export class MessageService {
       .catch((err) => console.log(err.response.data));
   }
 
-  private async sendGreetingResponse(recipientId: string) {
+  private async sendGreetingResponse(customerPsid: string) {
     const randomResponses = [
       'How are you? :)',
       `I hope you're doing well. :)`,
@@ -85,21 +85,21 @@ export class MessageService {
       randomResponses[Math.floor(Math.random() * randomResponses.length)];
 
     this.sendTextMessage(
-      recipientId,
+      customerPsid,
       `${greetingMessage}\nHow can I assist you?`,
     );
   }
 
-  private sendGenericResponse(recipientId: string) {
+  private sendGenericResponse(customerPsid: string) {
     this.sendTextMessage(
-      recipientId,
+      customerPsid,
       `I'm sorry :(\nI'm not sure how to process this.\nLet me ask for help from our customer service, hang on tight!`,
     );
   }
 
-  private sendInstructionsResponse(recipientId: string) {
+  private sendInstructionsResponse(customerPsid: string) {
     this.sendTextMessage(
-      recipientId,
+      customerPsid,
       `I'm sorry :(\nI don't think I can understand your intention.\n\nHere are things that I can understand, try typing: \n*/price product-xyz* _Price of a product._\n*/desc product-xyz* _The details of the product._\n*/shipping product-xyz* _The shipping fee of the product._`,
     );
   }
@@ -110,14 +110,14 @@ export class MessageService {
 
   private async replyWithProductInformation(
     productId: number,
-    recipientId: string,
+    customerPsid: string,
     intent: string,
   ) {
     const product = await this.productService.findOne(productId);
 
     if (!product) {
       this.sendTextMessage(
-        recipientId,
+        customerPsid,
         `I'm sorry, the product you're looking for is no longer available, perhaps try another search?`,
       );
       return;
@@ -125,13 +125,13 @@ export class MessageService {
 
     switch (intent) {
       case 'price-query':
-        this.sendTemplateMessage(recipientId, product, intent);
+        this.sendTemplateMessage(customerPsid, product, intent);
         break;
       case 'description-query':
-        this.sendTemplateMessage(recipientId, product, intent);
+        this.sendTemplateMessage(customerPsid, product, intent);
         break;
       case 'shipping-query':
-        this.sendTemplateMessage(recipientId, product, intent);
+        this.sendTemplateMessage(customerPsid, product, intent);
         break;
     }
   }
@@ -144,56 +144,54 @@ export class MessageService {
     for (const entry of body.entry) {
       // As per FB documentation, messaging property is an array that contains ONLY ONE messaging object
       const webhookEvent = entry.messaging[0];
+      const customerPsid = webhookEvent.sender.id;
 
-      console.log(webhookEvent.message.nlp.entities);
-      console.log(webhookEvent.message.nlp.traits);
+      // If incoming webhook event is neither 'messages' event or 'postback' event
+      if (!webhookEvent.message && !webhookEvent.postback) {
+        this.sendGenericResponse(webhookEvent.sender.id);
+        continue;
+      }
 
       // Handles 'message' event
       if (webhookEvent.message) {
         const incomingTextMessage = webhookEvent.message.text;
 
-        if (incomingTextMessage === 'hello') {
-          this.sendGreetingResponse(webhookEvent.sender.id);
-        } else if (incomingTextMessage.startsWith('/price ')) {
-          const productId = this.extractProductId(incomingTextMessage);
-          const recipientId = webhookEvent.sender.id;
+        if (incomingTextMessage.startsWith('/price ')) {
           this.replyWithProductInformation(
-            productId,
-            recipientId,
+            this.extractProductId(incomingTextMessage),
+            customerPsid,
             'price-query',
           );
         } else if (incomingTextMessage.startsWith('/desc ')) {
-          const productId = this.extractProductId(incomingTextMessage);
-          const recipientId = webhookEvent.sender.id;
           this.replyWithProductInformation(
-            productId,
-            recipientId,
+            this.extractProductId(incomingTextMessage),
+            customerPsid,
             'description-query',
           );
         } else if (incomingTextMessage.startsWith('/shipping ')) {
-          const productId = this.extractProductId(incomingTextMessage);
-          const recipientId = webhookEvent.sender.id;
           this.replyWithProductInformation(
-            productId,
-            recipientId,
+            this.extractProductId(incomingTextMessage),
+            customerPsid,
             'shipping-query',
           );
         } else {
+          this.sendGreetingResponse(webhookEvent.sender.id);
           this.sendInstructionsResponse(webhookEvent.sender.id);
         }
-        // Handles 'postback' event
-      } else if (webhookEvent.postback) {
-        const productId = webhookEvent.postback.payload.split('-')[0];
-        const recipientId = webhookEvent.sender.id;
-        this.sendTextMessage(
-          recipientId,
-          `Good Choice! Tell us your email and we'll drop you a purchase link!`,
-        );
+      }
 
-        // TODO: Save user PSID into db and save intent
-      } else {
-        this.sendGenericResponse(webhookEvent.sender.id);
-        continue;
+      // Handles 'postback' event
+      if (
+        webhookEvent.postback &&
+        webhookEvent.postback.payload.includes('PURCHASE-INTENT')
+      ) {
+        const productId = Number(webhookEvent.postback.payload.split('-')[0]);
+        const product = await this.productService.findOne(productId);
+        this.sendTextMessage(
+          customerPsid,
+          `Good Choice! We've received your request and will process your order shortly`,
+        );
+        this.emailService.sendNotification(customerPsid, product);
       }
     }
   }

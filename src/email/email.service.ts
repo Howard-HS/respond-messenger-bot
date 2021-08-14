@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import nodemailer from 'nodemailer';
 import { ConfigService } from '@nestjs/config';
+import { Product } from 'src/product/models/product.entity';
 
 @Injectable()
 export class EmailService {
@@ -26,6 +27,17 @@ export class EmailService {
       )}>`,
       subject,
       html: content,
+    });
+  }
+
+  async sendNotification(customerId: string, product: Product) {
+    return this.transporter.sendMail({
+      to: this.configService.get('EMAIL_NOTIFICATION_RECEIVER_EMAIL'),
+      from: `${this.configService.get('EMAIL_SENDER')}<${this.configService.get(
+        'EMAIL_SENDER_DOMAIN',
+      )}>`,
+      subject: `Customer ${customerId} Purchase Intent`,
+      html: '',
     });
   }
 }

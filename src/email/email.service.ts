@@ -35,7 +35,7 @@ export class EmailService {
 
   async sendNotification(customer: Customer, product: Product) {
     const template = await readFile(
-      join(__dirname, 'templates', 'purchase-details.html'),
+      join(__dirname, '../../email/templates', 'purchase-details.html'),
       'utf8',
     );
 

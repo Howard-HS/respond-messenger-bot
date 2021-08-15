@@ -1,19 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { config as initEnvs } from 'dotenv';
+import { ConfigService } from '@nestjs/config';
 import bodyParser from 'body-parser';
-
-initEnvs();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
   });
+  const configService = app.get<ConfigService>(ConfigService);
+
   app.use(
     bodyParser.raw({
       type: 'application/json',
     }),
   );
-  await app.listen(3000);
+  await app.listen(configService.get('APP_PORT') || 3000);
 }
 bootstrap();

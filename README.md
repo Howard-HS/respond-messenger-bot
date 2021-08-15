@@ -45,6 +45,9 @@ $ yarn start
 A sample of required envs are located env.example file
 
 ```bash
+# The local development port, defaults to 3000 if not specified
+APP_PORT=
+
 # Facebook page access token
 PAGE_ACCESS_TOKEN= 
 

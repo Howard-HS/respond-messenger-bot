@@ -1,4 +1,9 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  CanActivate,
+  ExecutionContext,
+  Injectable,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Request } from 'express';
 import { createHmac } from 'crypto';
@@ -9,6 +14,10 @@ export class VerifyPayload implements CanActivate {
 
   canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest() as Request;
+
+    if (!request.body) {
+      throw new BadRequestException('PAYLOAD_EMPTY');
+    }
 
     const rawData = Buffer.from(request.body).toString('utf8');
     const incomingSignature = request.headers['x-hub-signature'] as string;
@@ -23,6 +32,8 @@ export class VerifyPayload implements CanActivate {
         .digest('hex');
 
       return signature === incomingSignature.substring(5);
+    } else {
+      throw new BadRequestException('INVALID_SIGNATURE');
     }
   }
 }

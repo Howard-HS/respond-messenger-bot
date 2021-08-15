@@ -5,6 +5,7 @@
 - Express
 - Typescript
 - NestJS
+- SQLite
 #### Email Service
 - Mailgun
 - Nodemailer
